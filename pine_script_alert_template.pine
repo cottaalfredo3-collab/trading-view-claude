@@ -1,0 +1,49 @@
+// ─────────────────────────────────────────────────────────────────────────────
+// TradingView Pine Script — Webhook Alert Template
+// Paste this JSON string into your TradingView Alert → "Message" field.
+// TradingView will substitute {{placeholders}} at alert-fire time.
+// ─────────────────────────────────────────────────────────────────────────────
+
+// ── Example strategy using RSI + EMA ──
+//@version=5
+indicator("Claude Alert Example", overlay=true)
+
+ema20 = ta.ema(close, 20)
+ema50 = ta.ema(close, 50)
+rsi   = ta.rsi(close, 14)
+
+bullish_cross = ta.crossover(ema20, ema50)
+rsi_ob        = rsi > 70
+rsi_os        = rsi < 30
+
+// Fire alert on EMA crossover
+alertcondition(bullish_cross, title="EMA Bullish Cross", message="EMA Cross")
+alertcondition(rsi_ob,        title="RSI Overbought",    message="RSI OB")
+
+plot(ema20, color=color.blue,  title="EMA 20")
+plot(ema50, color=color.orange, title="EMA 50")
+
+// ─────────────────────────────────────────────────────────────────────────────
+// ALERT MESSAGE to paste into TradingView → Alert → Message box:
+// ─────────────────────────────────────────────────────────────────────────────
+/*
+{
+  "symbol":   "{{ticker}}",
+  "exchange": "{{exchange}}",
+  "interval": "{{interval}}",
+  "close":    {{close}},
+  "high":     {{high}},
+  "low":      {{low}},
+  "volume":   {{volume}},
+  "time":     "{{time}}",
+  "signal":   "EMA Bullish Crossover"
+}
+*/
+
+// ─────────────────────────────────────────────────────────────────────────────
+// ALERT WEBHOOK URL (in TradingView Alert → Notifications → Webhook):
+//   https://YOUR-SERVER.com/webhook
+//
+// Optional header (if you set WEBHOOK_SECRET):
+//   X-Webhook-Secret: your-secret-here
+// ─────────────────────────────────────────────────────────────────────────────

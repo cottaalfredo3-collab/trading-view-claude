@@ -13,7 +13,7 @@ from flask import Flask, request, jsonify
 import anthropic
 
 # ── Config ──────────────────────────────────────────────────────────────────
-ANTHROPIC_API_KEY = "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"
+ANTHROPIC_API_KEY = "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"
 WEBHOOK_SECRET    = os.environ.get("WEBHOOK_SECRET", "")      # optional auth token
 PORT              = int(os.environ.get("PORT", 5000))
 LOG_FILE          = "alerts.log"

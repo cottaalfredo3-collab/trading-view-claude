@@ -27,10 +27,10 @@ logging.basicConfig(
 log = logging.getLogger(__name__)
 
 app = Flask(__name__)
-WORKSPACE_ID = "efbc411f-ac20-4ac3-8763-b54bc12cc55c"
+WORKSPACE_ID = ""
 client = anthropic.Anthropic(
     api_key=ANTHROPIC_API_KEY,
-    default_headers={"anthropic-workspace-id": WORKSPACE_ID} if WORKSPACE_ID else {}
+    default_headers={}
 )
 
 

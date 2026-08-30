@@ -13,7 +13,7 @@ from flask import Flask, request, jsonify
 import anthropic
 
 # ── Config ──────────────────────────────────────────────────────────────────
-ANTHROPIC_API_KEY = os.environ.get("ANTHROPIC_API_KEY", "")
+ANTHROPIC_API_KEY = os.environ.get(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)
 WEBHOOK_SECRET    = os.environ.get("WEBHOOK_SECRET", "")      # optional auth token
 PORT              = int(os.environ.get("PORT", 5000))
 LOG_FILE          = "alerts.log"
@@ -27,7 +27,7 @@ logging.basicConfig(
 log = logging.getLogger(__name__)
 
 app = Flask(__name__)
-WORKSPACE_ID = os.environ.get("ANTHROPIC_WORKSPACE_ID", "")
+WORKSPACE_ID = "efbc411f-ac20-4ac3-8763-b54bc12cc55c"
 client = anthropic.Anthropic(
     api_key=ANTHROPIC_API_KEY,
     default_headers={"anthropic-workspace-id": WORKSPACE_ID} if WORKSPACE_ID else {}
